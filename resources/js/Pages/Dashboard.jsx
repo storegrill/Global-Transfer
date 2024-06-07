@@ -1,24 +1,15 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, usePage } from "@inertiajs/react";
-import Navbar from "../Components/Navbar";
-import backgroundImage from "../../../public/6927689.jpg";
-
-import Sidebar from "@/Components/Sidebar";
-import Dropdown from "@/Components/Dropdown";
+import { usePage } from "@inertiajs/react";
+import AuthenticatedLayout from "../Layouts/AuthenticatedLayout.jsx";
 
 export default function Dashboard() {
-    const {auth} = usePage().props;
-    const username = auth.user.name;
+    const { auth } = usePage().props;
 
     return (
-        <div
-            className="bg-white"
-            
-        >
-            <Sidebar/>
-            <div className="absolute top-0 right-0 p-4"> {/* Adjusted position to top right */}
-                <Dropdown username={auth.user.name}/>
+        <AuthenticatedLayout>
+            <div className="container mx-auto px-4">
+                <h1 className="text-2xl font-bold justify-center flex">Dashboard</h1>
+                <p className="justify-center flex">Welcome to the Global Transfer</p>
             </div>
-        </div>
+        </AuthenticatedLayout>
     );
 }
