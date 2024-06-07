@@ -1,18 +1,11 @@
 import { Head } from "@inertiajs/react";
 import Navbar from "../Components/Navbar";
 
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-
-import backgroundImage from "../../../public/6927689.jpg";
-
 export default function Welcome({ auth }) {
     return (
         <>
             <Head title="Welcome" />
-            <div
-                className="bg-cover bg-center bg-no-repeat h-screen"
-                style={{ backgroundImage: `url(${backgroundImage})` }}
-            >
+            <div className="min-h-screen bg-gradient-to-b from-cyan-600 to-cyan-100 flex flex-col">
                 <Navbar auth={auth} />
                 <div className="relative isolate px-6 pt-14 lg:px-8">
                     <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
