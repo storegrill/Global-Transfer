@@ -1,60 +1,76 @@
-
 import { useForm } from "@inertiajs/react";
+
+import CurrencyConverter from "@/Components/CurrencyConverter";
+import { UserCircle } from "lucide-react";
 
 export default function Login() {
     const { data, setData, post, processing, errors } = useForm({
-        email: '',
-        password: '',
+        email: "",
+        password: "",
     });
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        post(route('login'));
+        post(route("login"));
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100">
-            <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold text-center mb-4">Log in</h2>
-                <form onSubmit={handleSubmit}> 
-                    <div className="mb-4">
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                            Email
-                        </label>
+        <div className="flex min-h-screen bg-gradient-to-b from-blue-700 to-cyan-200">
+            <div className="w-1/2 flex flex-col justify-center items-center text-white p-8">
+                <form className="w-full max-w-sm p-14 rounded-lg">
+                    <div className="mb-0 pb-2">
+                        <h1 className="text-7xl font-bold mt-4 text-white pb-6">
+                            Global Transfer
+                        </h1>
                         <input
-                            type="email"
-                            name="email"
-                            id="email"
+                            className="shadow appearance-none border rounded-2xl w-[400px] h-14 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            id="username"
+                            type="text"
+                            placeholder="Email"
                             value={data.email}
-                            onChange={e => setData('email', e.target.value)}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            onChange={(e) => setData("email", e.target.value)}
                         />
-                        {errors.email && <div className="text-red-600 text-sm">{errors.email}</div>}
+                         <UserCircle className="relative h-5 w-5 text-black left-[350px] bottom-[37px]" />
+                        {errors.email && (
+                            <span className="text-red-500 text-sm">
+                                {errors.email}
+                            </span>
+                        )}
                     </div>
-                    <div className="mb-4">
-                        <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                            Password
-                        </label>
+                    <div className="mb-0">
                         <input
-                            type="password"
-                            name="password"
+                            className="shadow appearance-none border rounded-2xl w-[400px] h-14 py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                             id="password"
+                            type="password"
+                            placeholder="******************"
                             value={data.password}
-                            onChange={e => setData('password', e.target.value)}
-                            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            onChange={(e) =>
+                                setData("password", e.target.value)
+                            }
                         />
-                        {errors.password && <div className="text-red-600 text-sm">{errors.password}</div>}
+                        <UserCircle className="relative h-5 w-5 text-black left-[350px] bottom-[50px]" />
+                        {errors.password && (
+                            <span className="text-red-500 text-sm">
+                                {errors.password}
+                            </span>
+                        )}
                     </div>
-                    <div className="flex items-center justify-between">
+                    <div className="">
                         <button
-                            type="submit"
+                            className="bg-white w-[400px] h-14 hover:bg-blue-500 hover:text-white text-black font-bold py-2 px-4 rounded-2xl focus:outline-none focus:shadow-outline"
+                            type="button"
+                            onClick={handleSubmit}
                             disabled={processing}
-                            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
-                            Log in
+                            Sign In
                         </button>
                     </div>
                 </form>
+            </div>
+            <div className="w-1/2 flex justify-center items-center p-8">
+                <div className="text-center">
+                    <CurrencyConverter/>
+                </div>
             </div>
         </div>
     );

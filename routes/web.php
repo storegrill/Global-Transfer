@@ -15,6 +15,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/contact', function () {
+    return Inertia::render('Contact');
+})->name('contact');
+
+Route::get('/features', function () {
+    return Inertia::render('Features');
+})->name('features');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -25,17 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
-    Route::get('/inbox', function () {
-        return Inertia::render('Inbox');
-    })->name('inbox');
-
     Route::get('/card', function () {
         return Inertia::render('Card');
     })->name('card');
-
-    Route::get('/Statistics', function () {
-        return Inertia::render('Statistics');
-    })->name('statistics');
 
     Route::get('/Recipients', function () {
         return Inertia::render('Recipients');
@@ -48,6 +48,19 @@ Route::middleware('auth')->group(function () {
     Route::get('/Referral', function () {
         return Inertia::render('Referral');
     })->name('referral');
+
+    Route::get('/Accounts', function () {
+        return Inertia::render('Accounts');
+    })->name('accounts');
+
+    Route::get('/Converter', function () {
+        return Inertia::render('ConverterPage');
+    })->name('converter');
+    Route::get('/Settings', function () {
+        return Inertia::render('Settings');
+    })->name('settings');
+
+    
 });
 
 Route::get('/login', function () {
@@ -59,5 +72,7 @@ Route::get('/register', function () {
 })->name('register');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
 
 require __DIR__.'/auth.php';
