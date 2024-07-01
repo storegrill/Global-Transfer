@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
     ChevronLeftIcon,
-    BanknotesIcon,
     HomeIcon,
     InboxIcon,
     AdjustmentsHorizontalIcon,
@@ -12,9 +11,11 @@ import {
     ShareIcon,
     CogIcon,
     ArrowRightEndOnRectangleIcon,
+    ArrowsRightLeftIcon,
 } from "@heroicons/react/24/outline";
 
 import { Link } from "@inertiajs/react";
+import DashboardNavbar from "./DashboardNavbar";
 
 export default function Sidebar() {
     const [open, setOpen] = useState(true);
@@ -41,30 +42,10 @@ export default function Sidebar() {
     const Menus = [
         { title: "Home", icon: <HomeIcon className="h-6 w-6" />, href: "/" },
         {
-            title: "Inbox",
-            icon: <InboxIcon className="h-6 w-6" />,
-            href: route("inbox"),
-        },
-        {
             title: "Dashboard",
             icon: <AdjustmentsHorizontalIcon className="h-6 w-6" />,
-            gap: true,
+            // gap: true,
             href: "/dashboard",
-        },
-        {
-            title: "Card",
-            icon: <CreditCardIcon className="h-6 w-6" />,
-            href: route("card"),
-        },
-        {
-            title: "Statistics",
-            icon: <ChartPieIcon className="h-6 w-6" />,
-            href: route("statistics"),
-        },
-        {
-            title: "Recipients",
-            icon: <UserGroupIcon className="h-6 w-6" />,
-            href: route("recipients"),
         },
         {
             title: "Transactions",
@@ -72,15 +53,41 @@ export default function Sidebar() {
             href: route("transactions"),
         },
         {
+            title: "Accounts",
+            icon: <UserGroupIcon className="h-6 w-6" />,
+            href: route("accounts"),
+        },
+        {
+            title: "Converter",
+            icon: <ArrowsRightLeftIcon className="h-6 w-6" />,
+            href: route("converter"),
+        },
+        {
+            title: "Cards",
+            icon: <CreditCardIcon className="h-6 w-6" />,
+            href: route("card"),
+        },
+        {
+            title: "Recipients",
+            icon: <UserGroupIcon className="h-6 w-6" />,
+            href: route("recipients"),
+        },
+        {
             title: "Referral",
             icon: <ShareIcon className="h-6 w-6" />,
-            gap: true,
+            // gap: true,
             href: route("referral"),
+        },
+        {
+            title: "Settings",
+            icon: <CogIcon className="h-6 w-6" />,
+            gap: true,
+            href: route("settings"),
         },
         {
             title: "Sign Out",
             icon: <ArrowRightEndOnRectangleIcon className="h-6 w-6" />,
-            gap: true,
+            // gap: true,
             logout: true,
         },
     ];
@@ -90,32 +97,19 @@ export default function Sidebar() {
             <div
                 className={`${
                     open ? "w-72" : "w-20"
-                }  h-screen p-5 pt-8 bg-white relative duration-300`}
+                }  h-screen p-5 pt-1 bg-white relative duration-300`}
             >
                 <ChevronLeftIcon
-                    className={`size-9 absolute cursor-pointer -right-4 top-9 border-2 border-white bg-white rounded-full z-50 text-sky-600 ${
+                    className={`size-9 absolute cursor-pointer -right-4 top-9 border-2 border-white bg-white rounded-full z-50 text-gray-600 ${
                         !open && "rotate-180"
                     }`}
                     onClick={() => setOpen(!open)}
                 />
-                <div className="flex gap-x-4 items-center">
-                    <BanknotesIcon
-                        className={`size-9 cursor-pointer duration-600 text-cyan-600 ${
-                            open && "rotate-[360deg]"
-                        }`}
-                    />
-                    <h1
-                        className={`text-cyan-600 origin-left font-medium text-xl duraion-500  ${
-                            !open && "hidden"
-                        }`}
-                    >
-                        Global Transfer
-                    </h1>
-                </div>
+
                 <ul className="pt-6">
                     {Menus.map((menu, index) => (
                         <li
-                            className={`text-black text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-cyan-100 hover:text-black rounded-xl ${
+                            className={`text-gray-600 text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:border-l-4 hover:border-blue-700 hover:text-blue-700 rounded-xl ${
                                 menu.gap ? "mt-9" : "mt-2"
                             }`}
                             key={index}

@@ -3,13 +3,13 @@ import { Link, usePage } from "@inertiajs/react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-import Logo from '../../../public/logo1.png'
+// import Logo from '../../../public/logo1.png'
 
 const navigation = [
     { name: "Home", href: "/" },
-    { name: "Features", href: "#" },
+    { name: "Features", href: "/features" },
     { name: "Dashboard", href: "/dashboard", authRequired: true },
-    { name: "Contact", href: "#" },
+    { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -125,8 +125,8 @@ export default function Navbar() {
                                     </span>
                                     <img
                                         className="h-8 w-auto bg-gray-900"
-                                        src={Logo}
-                                        alt=""
+                                        
+                                        alt="1"
                                     />
                                 </a>
                                 <button
